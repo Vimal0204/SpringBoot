@@ -19,12 +19,26 @@ public class DemocrudApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner->{
 //			createStudent(studentDAO);
-//			createMultipleStudent(studentDAO);
+			createMultipleStudent(studentDAO);
 //			readStudent(studentDAO);
 //			queryForStudents(studentDAO);
 //			queryForStudentsByLastName(studentDAO);
-			updateStudent(studentDAO);
+//			updateStudent(studentDAO);
+//			deleteStudent(studentDAO);
+//			deleteAllStudent(studentDAO);
+
 		};
+	}
+
+	private void deleteAllStudent(StudentDAO studentDAO) {
+		System.out.println("Delete all Student");
+		System.out.println("Student deleted: "+studentDAO.deleteAll());
+	}
+
+	private void deleteStudent(StudentDAO studentDAO) {
+		int studentId=3;
+		System.out.println("Delete Student: "+studentId);
+		studentDAO.delete(studentId);
 	}
 
 	private void updateStudent(StudentDAO studentDAO) {
@@ -86,7 +100,7 @@ public class DemocrudApplication {
 	private void createMultipleStudent(StudentDAO studentDAO) {
 		// create the student object
 		System.out.println("Creating 3 Student object...");
-		Student tempStudent1 = new Student("John","Doe","paul@luv2code.com");
+		Student tempStudent1 = new Student("John","Doe","john@luv2code.com");
 		Student tempStudent2 = new Student("Mary","Doe","mary@luv2code.com");
 		Student tempStudent3 = new Student("Bonita","Applebum","bonita@luv2code.com");
 

@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `student_tracker`;
+studentCREATE DATABASE  IF NOT EXISTS `student_tracker`;
 USE `student_tracker`;
 
 --

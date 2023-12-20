@@ -16,6 +16,10 @@ public class Expenses {
     @Column(name="identify_id")
     private String identityId;
 
+    @Column(name = "expense_name")
+    private  String expenseName;
+
+    // Constructor...
     public Expenses(long id, String identityId, String expenseName, double expenseAmount, String expenseType, String expenseDate) {
         this.id = id;
         this.identityId = identityId;
@@ -25,11 +29,7 @@ public class Expenses {
         this.expenseDate = expenseDate;
     }
 
-    @Column(name = "expense_name")
-    private  String expenseName;
-
-    public Expenses() {
-    }
+    // GEtter and setter mehtods...
 
     @Column(name = "expense_amount")
     private  double expenseAmount;

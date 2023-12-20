@@ -20,7 +20,7 @@ public class ExpensesRestController {
         List<Expenses> theExpenses = expensesServices.findByIdentityId(identifyingId);
         return theExpenses;
     }
-    @GetMapping("/expenses/{identifyingId}")
+    @GetMapping("/amount/{identifyingId}")
     public double getAmount(@PathVariable String identifyingId){
         return expensesServices.getTotalAmountByIdentityId(identifyingId);
     }
@@ -30,7 +30,7 @@ public class ExpensesRestController {
         Expenses db = expensesServices.save(theExpenses);
         return db;
     }
-    @DeleteMapping("/expenses/{id}")
+    @DeleteMapping("expenses/{id}")
     public String deleteExpenses(@PathVariable long id){
         expensesServices.deleteById(id);
         return "The id is : "+id;

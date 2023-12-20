@@ -29,7 +29,9 @@ public class Expenses {
         this.expenseDate = expenseDate;
     }
 
-    // GEtter and setter mehtods...
+    public Expenses() {
+    }
+// GEtter and setter mehtods...
 
     @Column(name = "expense_amount")
     private  double expenseAmount;
@@ -86,5 +88,17 @@ public class Expenses {
 
     public void setExpenseDate(String expenseDate) {
         this.expenseDate = expenseDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Expenses{" +
+                "id=" + id +
+                ", identityId='" + identityId + '\'' +
+                ", expenseName='" + expenseName + '\'' +
+                ", expenseAmount=" + expenseAmount +
+                ", expenseType='" + expenseType + '\'' +
+                ", expenseDate='" + expenseDate + '\'' +
+                '}';
     }
 }

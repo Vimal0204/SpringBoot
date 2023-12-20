@@ -3,10 +3,11 @@ package com.kharchkhata.springboot.kharchkhataCruddemo.Service;
 import com.kharchkhata.springboot.kharchkhataCruddemo.DAO.ExpensesDAO;
 import com.kharchkhata.springboot.kharchkhataCruddemo.Entity.Expenses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Service
 public class ExpensesServiceImpl implements ExpensesServices{
     ExpensesDAO expensesDAO;
 

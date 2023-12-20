@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class ExpensesDAOImpl implements ExpensesDAO{
 
     @Override
     public List<Expenses> findByIdentityId(String identifyingId) {
-        TypedQuery<Expenses> theQuery =entityManager.createQuery("from Expenses where identity_id='identifyingId'",Expenses.class).setParameter("identifyingId",identifyingId);
+        TypedQuery<Expenses> theQuery =entityManager.createQuery("from Expenses e where e.identityId= :identifyingId",Expenses.class).setParameter("identifyingId",identifyingId);
         List<Expenses> theExpenses = theQuery.getResultList();
         return theExpenses;
     }
@@ -37,7 +38,7 @@ public class ExpensesDAOImpl implements ExpensesDAO{
 
     @Override
     public double getTotalAmountByIdentityId(String identifyingId) {
-        Query theQuery = entityManager.createQuery("Sum(expenses_amount) from Expenses where identity_id=identifyingId as amount").setParameter("identifyingId",identifyingId);
+        Query theQuery = entityManager.createQuery("Select SUM(e.expenseAmount) from Expenses e where e.identityId= :identifyingId").setParameter("identifyingId",identifyingId);
         return (double) theQuery.getSingleResult();
     }
 }

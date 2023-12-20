@@ -35,6 +35,11 @@ public class ExpensesServiceImpl implements ExpensesServices{
     }
 
     @Override
+    public Expenses findById(long theId) {
+        return expensesDAO.findById(theId);
+    }
+
+    @Override
     public double getTotalAmountByIdentityId(String identifyingId) {
         return expensesDAO.getTotalAmountByIdentityId(identifyingId);
     }

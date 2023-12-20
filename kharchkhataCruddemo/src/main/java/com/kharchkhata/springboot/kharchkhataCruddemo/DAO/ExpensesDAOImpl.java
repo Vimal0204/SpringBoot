@@ -31,8 +31,7 @@ public class ExpensesDAOImpl implements ExpensesDAO{
     }
 
     @Override
-    public void deleteById(long theId) {
-        
+    public void deleteById(long theId,String identifyingId) {
         Expenses theExpense = entityManager.find(Expenses.class,theId);
         entityManager.remove(theExpense);
     }
@@ -40,7 +39,6 @@ public class ExpensesDAOImpl implements ExpensesDAO{
     @Override
     public Expenses findById(long theId) {
         return entityManager.find(Expenses.class,theId);
-
     }
 
     @Override

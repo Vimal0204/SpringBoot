@@ -30,8 +30,8 @@ public class ExpensesServiceImpl implements ExpensesServices{
 
     @Transactional
     @Override
-    public void deleteById(long theId) {
-       expensesDAO.deleteById(theId);
+    public void deleteById(long theId,String identifyingId) {
+       expensesDAO.deleteById(theId, identifyingId);
     }
 
     @Override

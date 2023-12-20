@@ -30,13 +30,13 @@ public class ExpensesRestController {
         Expenses db = expensesServices.save(theExpenses);
         return db;
     }
-    @DeleteMapping("expenses/{id}")
-    public String deleteExpenses(@PathVariable long id){
+    @DeleteMapping("expenses/{identifyingId}/{id}")
+    public String deleteExpenses(@PathVariable long id,@PathVariable String identifyingId){
         Expenses deleteExpense = expensesServices.findById(id);
         if (deleteExpense == null) {
             throw new RuntimeException("Expenses id not found: "+id);
         }
-        expensesServices.deleteById(id);
+        expensesServices.deleteById(id,identifyingId);
         return "The id is : "+id;
     }
 }

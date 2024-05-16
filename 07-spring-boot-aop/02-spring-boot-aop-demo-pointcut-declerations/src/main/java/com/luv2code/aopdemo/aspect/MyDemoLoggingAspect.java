@@ -2,10 +2,7 @@ package com.luv2code.aopdemo.aspect;
 
 import com.luv2code.aopdemo.Account;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -16,7 +13,21 @@ import java.util.List;
 @Component
 @Order(2)
 public class MyDemoLoggingAspect {
-    // add a new advice for @AfterReturning on the findAccounts method
+    @AfterThrowing(
+            pointcut = "execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..))",
+            throwing = "theExc")
+    public void afterThrowingFindAccountsAdvice(JoinPoint theJoinPoint,Throwable theExc){
+        // print out which method we are advising on
+        String method=theJoinPoint.getSignature().toShortString();
+        System.out.println("\n=====>>> Executing the @AfterThrowing on method: "+method);
+
+        //log the exception
+        System.out.println("\n=====>>> The Exception is: "+theExc);
+
+    }
+
+
+    // add a new advise for @AfterReturning on the findAccounts method
 
     @AfterReturning(
             pointcut = "execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..))",
